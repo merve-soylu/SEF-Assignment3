@@ -3,7 +3,6 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String password;
-    private LoginStatus status = LoginStatus.LOGGEDIN;
     private UserStatus loginstatus = UserStatus.NORMAL;
     protected boolean initiateResetProcess = false;
 
