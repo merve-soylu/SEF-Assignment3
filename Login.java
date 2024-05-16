@@ -113,18 +113,15 @@ class WebsiteUI {
 
     // method to initiate password reset
     public void initiatePasswordReset(User user) {
-        EmailService emailService = new EmailService();
-        emailService.sendEmail(user, "Reset password instructions");
+        EmailService.sendEmail(user, "Reset password instructions");
         System.out.println("Password reset instructions sent to email");
     }
 
     // method to reset password in database
     public void resetPassword(User user, String newPassword) {
-        LoginService login = new LoginService();
-        
         for(User u: Database.users){
             if(u.getUsername().equals(u.getUsername())){
-                login.resetPassword(u, newPassword);
+                LoginService.resetPassword(u, newPassword);
             }
         }
         System.out.println("Password reset successfully");
