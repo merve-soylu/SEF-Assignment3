@@ -1,10 +1,12 @@
 import java.util.ArrayList;
-
+import java.time.LocalDate;
 //selction of search filters
 enum Filter {
     DEFAULT,
     UPVOTES,
-    DOWNVOTES
+    DOWNVOTES,
+    OLDEST,
+    NEWEST,
 }
 
 //mock database which is storing all Posts on the Code QA platform
@@ -25,20 +27,21 @@ class User {
 
 //Post Class
 class Post {
-
     int postID;
     User author;
     String content;
     int upvote;
     int downvote;
     boolean flagged = false;
+    // date of creation post date initalised as LocalDate postDate = LocallDate.of(YYYY, MM, DD)
+    LocalDate postDate;
 
     //creates a post object
-    Post (int postID, User user, String content){
+    Post (int postID, User user, String content, LocalDate postDate){
         this.postID = postID;
         this.author = user;
         this.content = content;
-
+        this.postDate = postDate;
         //stores created Post in Database
         Database.Posts.add(this);
     }
@@ -53,6 +56,7 @@ class Post {
             if (this.postID == post.postID){
                 post.content = this.content;
                 post.author = this.author;
+                post.postDate = this.postDate;
             }
         }
     }
@@ -132,6 +136,7 @@ class WebsiteUI {
             for (Post post : searchResults) {
                 System.out.println("Author: " + post.author);
                 System.out.println("Content: " + post.content);
+                System.out.println("Date Posted: " + post.postDate);
             }
             System.out.println();
         }
