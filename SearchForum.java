@@ -89,13 +89,13 @@ class SearchForum {
 
         //Sort Search Results according to the users Selected Filter
         if (selectedFilter == Filter.UPVOTES){
-            for (Post post : Database.Posts){
+            for (Post post : searchResults){
                 //sort the search results by highest Upvote count to lowest Upvote count
                 //update the searchResults ArrayList
             }
         }
         else if (selectedFilter == Filter.DOWNVOTES){
-            for (Post post : Database.Posts){
+            for (Post post : searchResults){
                 //sort the search results by highest Downvote count to lowest Downvote count
                 //update the searchResults ArrayList
             }
