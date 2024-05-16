@@ -101,10 +101,7 @@ public class Post {
     }
 
     public void deletePost(){
-        // Change Content to Display "Content of Question has been removed" on Search Forum Overview
-        // Change Author to Null 
-        // Update content and author in the Database for deleted post
-
+        // Update content and author in the Database for deleted post when displayed on Search Forum Overview
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
                 post.content = "Content of Question has been removed";
@@ -115,12 +112,10 @@ public class Post {
     }
 
     public void flagPost(){
-        flagged = true;
-
         //updates flagged in the database
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
-                post.flagged = this.flagged;
+                post.flagged = true;
             }
         }
     }
