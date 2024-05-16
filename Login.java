@@ -55,25 +55,20 @@ class User {
 
 class LoginService {
     // method to authenticate user
-    public boolean authenticateUser(String username, String password) {
+    public boolean verification(String username, String password) {
 
         // Check if user is Banned or Frozen
         for(User user: Database.users) {
             if(user.getUsername().equals(username)) {
-                if(user.getStatus() != User.UserStatus.NORMAL) {
-                    return false;
+                if(user.getStatus() == User.UserStatus.NORMAL) {
+                        // check if password is correct
+                        if(isPasswordCorrect(username, password)) {
+                            return true;
+                        }
                 }
             }
         }
-
-        // check if user exists
-        if(userExists(username)) {
-            // check if password is correct
-            if(isPasswordCorrect(username, password)) {
-                return true;
-            }
-        }
-        
+       
         return false;
     }
 
@@ -117,7 +112,7 @@ class WebsiteUI {
     // method to initiate user login
     public void initiateLogin(String username, String password) {
         LoginService login = new LoginService();
-        if(login.authenticateUser(username, password)) {
+        if(login.verification(username, password)) {
             System.out.println("User logged in successfully");
         } else {
             System.out.println("Invalid username or password");
