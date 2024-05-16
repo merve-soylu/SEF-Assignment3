@@ -133,13 +133,12 @@ class WebsiteUI {
 
     // method to initiate password reset
     public void initiatePasswordReset(User user) {
-        user.initiatePasswordReset();
         EmailService emailService = new EmailService();
-        emailService.sendEmail(user.getUsername(), "Reset password instructions");
+        emailService.sendEmail(user, "Reset password instructions");
         System.out.println("Password reset instructions sent to email");
     }
 
-    // method to reset password in database 
+    // method to reset password in database
     public void resetPassword(User user, String newPassword) {
         LoginService login = new LoginService();
         
@@ -163,14 +162,10 @@ class Database {
 }
 
 class EmailService {
-    private String email;
-    private String resetPasswordInstructions;
 
     // method to send email
-    public void sendEmail(String email, String resetPasswordInstructions) {
-        this.email = email;
-        this.resetPasswordInstructions = resetPasswordInstructions;
-        System.out.println("Email sent to " + email + " with instructions: " + resetPasswordInstructions);
+    public void sendEmail(User user, String resetPasswordInstructions) {
+        user.initiatePasswordReset();
+        System.out.println("Email sent to " + user.getUsername() + " with instructions: " + resetPasswordInstructions);
     }
-
 }
