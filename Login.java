@@ -26,16 +26,6 @@ public class User {
     public UserStatus getStatus() {
         return status;
     }
-
-    // set login status of user
-    public void setLoginStatus(LoginStatus loginstatus) {
-        this.loginstatus = loginstatus;
-    }
-
-    // get login status of user
-    public LoginStatus getLoginStatus() {
-        return loginstatus;
-    }
     
     // constructor for user
     public User(String username, String password) {
@@ -78,7 +68,7 @@ public class LoginService {
                 // Check if user is Banned or Frozen
                 if(user.getStatus() == User.UserStatus.NORMAL) {
                         // Check if username and password are correct for User
-                        if(verification(username, password)) {
+                        if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
                             // Return verified
                             return true;
                         }
@@ -89,37 +79,27 @@ public class LoginService {
         return false;
     }
 
+     // method to login user out
+    public void loginUser(String username, String password) {
+        // logic to login user out
+    }
+    
     // method to log user out
     public void logoutUser(User user) {
         // logic to log user out
     }
-
-    // check if password is correcrt for the username
-    public boolean verification(String username, String password) {
-        for(User user: Database.users) {
-            if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
+    
     // reset password
     public void resetPassword(User user, String newPassword) {
         user.password = newPassword;
     }
-
-
 }
 
 class WebsiteUI {
-
     // method to initiate user login
     public void login(String username, String password) {
-        LoginService login = new LoginService();
-        User.setLoginStatus()
-        if(login.verification(username, password)) {
+        if(LoginService.verification(username, password)) {
+            LoginService.loginUser(username, password)
             System.out.println("User logged in successfully");
         } else {
             System.out.println("Invalid username or password");
@@ -128,8 +108,7 @@ class WebsiteUI {
 
     // method to initiate user logout
     public void logout(User user) {
-        LoginService loginRequest = new LoginService();
-        loginRequest.logoutUser(user);
+        LoginService.logoutUser(user);
         System.out.println("User logged out successfully");
     }
 
