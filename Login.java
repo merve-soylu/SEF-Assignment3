@@ -1,14 +1,20 @@
 import java.util.ArrayList;
 
-class User {
+public class User {
     private String username;
     private String password;
-    private UserStatus status = UserStatus.NORMAL;
+    private LoginStatus status = LoginStatus.LOGGEDIN;
+    private UserStatus loginstatus = UserStatus.NORMAL;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
     public enum UserStatus {
         BANNED, FROZEN, NORMAL
+    }
+
+    // enum for login status of user {LOGGEDIN, LOGGEDOUT}
+    public enum LoginStatus {
+        LOGGEDIN, LOGGEDOUT
     }
 
     // set status of user
@@ -20,7 +26,17 @@ class User {
     public UserStatus getStatus() {
         return status;
     }
-   
+
+    // set login status of user
+    public void setLoginStatus(LoginStatus loginstatus) {
+        this.loginstatus = loginstatus;
+    }
+
+    // get login status of user
+    public LoginStatus getLoginStatus() {
+        return loginstatus;
+    }
+    
     // constructor for user
     public User(String username, String password) {
         this.username = username;
@@ -53,22 +69,23 @@ class User {
 
 }
 
-class LoginService {
+public class LoginService {
     // method to authenticate user
     public boolean verification(String username, String password) {
-
-        // Check if user is Banned or Frozen
         for(User user: Database.users) {
+            // Check if the user is in database
             if(user.getUsername().equals(username)) {
+                // Check if user is Banned or Frozen
                 if(user.getStatus() == User.UserStatus.NORMAL) {
-                        // check if password is correct
-                        if(isPasswordCorrect(username, password)) {
+                        // Check if username and password are correct for User
+                        if(verification(username, password)) {
+                            // Return verified
                             return true;
                         }
                 }
             }
         }
-       
+        // Return unverified
         return false;
     }
 
@@ -78,7 +95,7 @@ class LoginService {
     }
 
     // check if password is correcrt for the username
-    public boolean isPasswordCorrect(String username, String password) {
+    public boolean verification(String username, String password) {
         for(User user: Database.users) {
             if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return true;
@@ -90,7 +107,7 @@ class LoginService {
 
     // reset password
     public void resetPassword(User user, String newPassword) {
-        user.resetPassword(newPassword);
+        user.password = newPassword;
     }
 
 
@@ -99,8 +116,9 @@ class LoginService {
 class WebsiteUI {
 
     // method to initiate user login
-    public void initiateLogin(String username, String password) {
+    public void login(String username, String password) {
         LoginService login = new LoginService();
+        User.setLoginStatus()
         if(login.verification(username, password)) {
             System.out.println("User logged in successfully");
         } else {
@@ -109,9 +127,9 @@ class WebsiteUI {
     }
 
     // method to initiate user logout
-    public void initiateLogout(User user) {
-        LoginService login = new LoginService();
-        login.logoutUser(user);
+    public void logout(User user) {
+        LoginService loginRequest = new LoginService();
+        loginRequest.logoutUser(user);
         System.out.println("User logged out successfully");
     }
 
@@ -133,20 +151,14 @@ class WebsiteUI {
         }
         System.out.println("Password reset successfully");
     }
-
-    
-
 }
 
 class Database {
-
     // array of users
     static ArrayList<User> users = new ArrayList<>();
-
 }
 
 class EmailService {
-
     // method to send email
     public void sendEmail(User user, String resetPasswordInstructions) {
         user.initiatePasswordReset();
