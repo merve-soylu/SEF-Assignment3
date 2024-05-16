@@ -28,7 +28,7 @@ public static class Database {
     }
     
     //returns a List of Posts that match a search query
-    public static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter, ArrayList<Post> searchResults){
+    public ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter, ArrayList<Post> searchResults) {
         
         //checks through all Posts in the database
         for (Post post : Database.Posts) {
@@ -132,7 +132,6 @@ public static class SearchForum {
 
 
 public static class WebsiteUI {
-    
     //user inputs a search keyword/phrase and selects a search Filter
     public void searchInquiry(String userInput, Filter selectedFilter){
        
