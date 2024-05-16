@@ -101,7 +101,7 @@ public class Post {
     }
 
     public void deletePost(){
-        // Update content and author in the Database for deleted post when displayed on Search Forum Overview
+        //updates content and author in the Database for deleted post and for when it's displayed on Search Forum Overview
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
                 post.content = "Content of Question has been removed";
@@ -112,7 +112,7 @@ public class Post {
     }
 
     public void flagPost(){
-        //updates flagged in the database
+        //updates flagged in the Database for flagged post and for when it's displayed on Search Forum Overview
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
                 post.flagged = true;
