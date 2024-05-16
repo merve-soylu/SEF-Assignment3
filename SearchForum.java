@@ -12,6 +12,7 @@ enum Filter {
 
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
+    ArrayList<Post> Posts; 
     
     //creates empty list for results
     ArrayList<Post> searchResults = new ArrayList<>();
@@ -27,7 +28,7 @@ public static class Database {
     }
     
     //returns a List of Posts that match a search query
-    public static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter){
+    public static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter, ArrayList<Post> searchResults){
         
         //checks through all Posts in the database
         for (Post post : Database.Posts) {
