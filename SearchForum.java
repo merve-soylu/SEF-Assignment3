@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.time.LocalDate;
-//selction of search filters
+
+//selection of search filters user can select from to sort order of posts in search forum
 enum Filter {
     DEFAULT,
     UPVOTES,
@@ -11,6 +12,11 @@ enum Filter {
 
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
+    
+    //creates empty list for results
+    ArrayList<Post> searchResults = new ArrayList<>();
+
+    //returns whether database found results that are relevant to the inquiry
     public boolean postsFound(ArrayList<Post> findPostInSearchForum) {
         if (findPostInSearchForum != null) {
             return true;
@@ -23,9 +29,6 @@ public static class Database {
     //returns a List of Posts that match a search query
     public static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter){
         
-        //creates empty list for results
-        ArrayList<Post> searchResults = new ArrayList<>();
-        
         //checks through all Posts in the database
         for (Post post : Database.Posts) {
             //if it finds a match to the query
@@ -37,27 +40,27 @@ public static class Database {
 
         //Sort Search Results according to the users Selected Filter
         if (selectedFilter == Filter.UPVOTES){
+            //sort the search results by highest Upvote count to lowest Upvote count
             for (Post post : searchResults){
-                //sort the search results by highest Upvote count to lowest Upvote count
                 //update the searchResults ArrayList
             }
         }
         else if (selectedFilter == Filter.DOWNVOTES){
+            //sort the search results by highest Downvote count to lowest Downvote count
             for (Post post : searchResults){
-                //sort the search results by highest Downvote count to lowest Downvote count
                 //update the searchResults ArrayList
             }
         }
         else if (selectedFilter == Filter.OLDEST) {
+            //sort the search results showing oldest posts first
             for (Post post : searchResults) {
-                //sort the search results by highest Downvote count to lowest Downvote count
                 //update the searchResults ArrayList
             }
         }
 
         else if (selectedFilter == Filter.NEWEST) {
+            //sort the search results by showing newest posts first
             for (Post post : searchResults) {
-                //sort the search results by highest Downvote count to lowest Downvote count
                 //update the searchResults ArrayList
             }
         }
