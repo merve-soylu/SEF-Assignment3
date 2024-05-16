@@ -100,15 +100,14 @@ public class Post {
     }
 
     public void deletePost(){
-        
-        content = "Content has been removed";
-        author = null;
+        // Change Content to Display "Content of Question has been removed" on Search Forum Overview
+        // Change Author to Null 
+        // Update content and author in the Database for deleted post
 
-        //updates content and author in the Database
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
-                post.content = this.content;
-                post.author = this.author;
+                post.content = "Content of Question has been removed";
+                post.author = Null;
                 post.postDate = this.postDate;
             }
         }
