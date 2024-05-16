@@ -129,8 +129,7 @@ public static class SearchForum {
         public static ArrayList<Post> searchResults = new ArrayList<Post>();
 
         //gets search results from the Search Forum class
-        ArrayList<Post> searchResults = SearchForum.findPostInSearchForum(userInput, selectedFilter);
-    
+        ArrayList<Post> searchResults = DataBase.findPostInSearchForum(userInput, selectedFilter);
 }
 
 
@@ -138,9 +137,9 @@ public static class WebsiteUI {
     
     //user inputs a search keyword/phrase and selects a search Filter
     public void searchInquiry(String userInput, Filter selectedFilter){
-        
+       
         //displays results to the user
-        displayResults(SearchForum.searchResults);
+        displayResults(SearchForum.searchResults(userInput, selectedFilter));
     }
 
     //takes in a list of Posts
@@ -148,7 +147,7 @@ public static class WebsiteUI {
         
         System.out.println("Search Results: ");
         //if the list of posts is not null
-        if (searchResults != null){
+        if (database.postFound(searchInquiry)){
             //Display each Post in the list
             for (Post post : searchResults) {
                 System.out.println("Author: " + post.author);
