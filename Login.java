@@ -77,17 +77,6 @@ class LoginService {
         // logic to log user out
     }
 
-    public boolean userExists(String username) {
-        // if the user exists in database
-        for(User user: Database.users) {
-            if(user.getUsername().equals(username)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     // check if password is correcrt for the username
     public boolean isPasswordCorrect(String username, String password) {
         for(User user: Database.users) {
