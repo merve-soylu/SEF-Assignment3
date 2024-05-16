@@ -1,32 +1,20 @@
 import java.util.ArrayList;
 
-class SearchForum {
+//selction of search filters
+enum Filter {
+    DEFAULT,
+    UPVOTES,
+    DOWNVOTES
+}
 
-    //returns a List of Posts that match a search query
-    ArrayList<Post> searchInquiry(String query){
-        
-        //creates empty list for results
-        ArrayList<Post> searchResults = new ArrayList<>();
-        
-        //checks through all Posts in the database
-        for (Post post : Database.Posts) {
-            //if it finds a match to the query
-            if (post.content.contains(query)) {
-                //adds that post to the list of results
-                searchResults.add(post);
-            }
-        }
-
-        return searchResults;
-    }
-
-
-    void filterResults(){
-        //add filtering here
-    }
+//mock database which is storing all Posts on the Code QA platform
+class Database {
+    //ArrayList of all stored Posts
+    static ArrayList<Post> Posts = new ArrayList<>();
 
 }
 
+//User Class
 class User {
 
     String username;
@@ -35,6 +23,7 @@ class User {
 
 }
 
+//Post Class
 class Post {
 
     int postID;
@@ -44,12 +33,13 @@ class Post {
     int downvote;
     boolean flagged = false;
 
-    //creates a post object and stores it in the Database
+    //creates a post object
     Post (int postID, User user, String content){
         this.postID = postID;
         this.author = user;
         this.content = content;
 
+        //stores created Post in Database
         Database.Posts.add(this);
     }
 
@@ -80,21 +70,65 @@ class Post {
 
 }
 
-//mock database which is storing all Posts on the Code QA platform
-class Database {
-    //list of all stored Posts
-    static ArrayList<Post> Posts = new ArrayList<>();
+class SearchForum {
+
+    //returns a List of Posts that match a search query
+    static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter){
+        
+        //creates empty list for results
+        ArrayList<Post> searchResults = new ArrayList<>();
+        
+        //checks through all Posts in the database
+        for (Post post : Database.Posts) {
+            //if it finds a match to the query
+            if (post.content.contains(query)) {
+                //adds that post to the list of results
+                searchResults.add(post);
+            }
+        }
+
+        //Sort Search Results according to the users Selected Filter
+        if (selectedFilter == Filter.UPVOTES){
+            for (Post post : Database.Posts){
+                //sort the search results by highest Upvote count to lowest Upvote count
+                //update the searchResults ArrayList
+            }
+        }
+        else if (selectedFilter == Filter.DOWNVOTES){
+            for (Post post : Database.Posts){
+                //sort the search results by highest Downvote count to lowest Downvote count
+                //update the searchResults ArrayList
+            }
+
+        }
+        
+        //return the search results
+        return searchResults;
+        
+    } 
 
 }
 
-class WebsiteUI {
 
-    //takes in a list of results from a searchInquiry
+class WebsiteUI {
+    
+    //user inputs a search keyword/phrase and selects a search Filter
+    void searchInquiry(String userInput, Filter selectedFilter){
+        
+        //gets search results from the Search Forum class
+        ArrayList<Post> searchResults = SearchForum.findPostInSearchForum(userInput, selectedFilter);
+        
+        //displays results to the user
+        displayResults(searchResults);
+    }
+
+    //takes in a list of Posts
     void displayResults(ArrayList<Post> searchResults){
+        
         System.out.println("Search Results: ");
-        //if the results are not null
+        //if the list of posts is not null
         if (searchResults != null){
-            //returns each result
+            //Display each Post in the list
             for (Post post : searchResults) {
                 System.out.println("Author: " + post.author);
                 System.out.println("Content: " + post.content);
@@ -104,6 +138,5 @@ class WebsiteUI {
         //else returns error message of no results found
         else System.out.println("No Results found! Please try again with more specific keywords");
     }
-    
     
 }
