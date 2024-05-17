@@ -52,7 +52,8 @@ public static class WebsiteUI {
 
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
-    public static ArrayList<Post> Posts; 
+    //list of all the Posts
+    ArrayList<Post> Posts = new ArrayList;
     
     //creates empty list for results
     ArrayList<Post> searchResults = new ArrayList<>();
