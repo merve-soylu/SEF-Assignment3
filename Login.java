@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+// User Class
 public class User {
     private String username;
     private String password;
@@ -65,6 +66,7 @@ public class User {
 
 }
 
+// LoginService Class
 public class LoginService {
     // method to authenticate user
     public boolean verification(String username, String password) {
@@ -127,11 +129,13 @@ public class WebsiteUI {
     }
 }
 
+// Database Class
 class Database {
     // array of users
     static ArrayList<User> users = new ArrayList<>(/*All the users*/);
 }
 
+// EmailService Class
 class EmailService {
     // method to send email
     public void sendEmail(User user, String resetPasswordInstructions) {
