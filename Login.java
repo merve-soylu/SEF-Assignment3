@@ -10,7 +10,7 @@ public class User {
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
-    private LoginStatus loginStatus = loginStatus.LOGGEDIN;
+    private LoginStatus loginStatus = LoginStatus.LOGGEDIN;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
