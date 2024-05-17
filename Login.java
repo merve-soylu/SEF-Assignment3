@@ -5,6 +5,7 @@ public class User {
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
+    private UserStatus status = UserStatus.NORMAL;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
@@ -20,6 +21,18 @@ public class User {
     // get status of user
     public UserStatus getStatus() {
         return status;
+    }
+
+     // set status of user
+    public void setLoginStatus(LoginStatus loginStatus) {
+        // If user is attempting to login preform given logic
+        if (loginStatus == LoginStatus.LOGGEDIN) {
+            Website.login(String username, String password)
+        }
+        // If user is attempting to logout preform given logic
+        else {
+            Website.logout(User user)
+        }
     }
     
     // constructor for user
