@@ -33,11 +33,13 @@ public class User {
         // If user is attempting to login preform given logic
         this.loginStatus = loginStatus;
         if (loginStatus == LoginStatus.LOGGEDIN) {
-            this.loginStatus = WebsiteUI.login(username, password);
+            WebsiteUI websiteUI = new WebsiteUI();
+            this.loginStatus = websiteUI.login(username, password);
         }
         // If user is attempting to logout preform given logic
         else {
-            this.loginStatus = WebsiteUI.logout(User user);
+            WebsiteUI websiteUI = new WebsiteUI();
+            this.loginStatus = websiteUI.logout(User user);
         }
     }
 
