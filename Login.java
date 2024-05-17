@@ -129,7 +129,7 @@ public class WebsiteUI {
 
 class Database {
     // array of users
-    static ArrayList<User> users = new ArrayList<>();
+    static ArrayList<User> users = new ArrayList<>(/*All the users*/);
 }
 
 class EmailService {
