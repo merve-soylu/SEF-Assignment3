@@ -40,6 +40,11 @@ public class User {
             Website.logout(User user)
         }
     }
+
+    // get loginStatus of user
+    public LoginStatus getLoginStatus() {
+        return loginStatus;
+    }
     
     // constructor for user
     public User(String username, String password) {
