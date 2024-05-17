@@ -46,7 +46,7 @@ public class User {
         // If user is attempting to logout preform given logic
         else {
             WebsiteUI websiteUI = new WebsiteUI();
-            this.loginStatus = websiteUI.logout(User user);
+            this.loginStatus = websiteUI.logout(user);
         }
     }
 
