@@ -107,7 +107,7 @@ class LoginService {
     // reset password
     public void callUpdatePassword(User user, String newPassword) {
         Database database = new Database();
-        database.updatePassword(User user, String newPassword)
+        database.updatePassword(user, newPassword);
     }
 
     // Login user
@@ -171,6 +171,7 @@ class Database {
                 // implement logic for changing password in database
                 }
         }
+    }
 }
 
 // EmailService Class
