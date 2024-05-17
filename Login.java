@@ -158,7 +158,7 @@ class WebsiteUI {
 
     // method to initiate password reset
     public void requestPasswordReset(User user, String email) {
-        emailService.sendEmail(user, email);
+        emailService.sendPasswordResetEmail(user, email);
         System.out.println("Password reset instructions sent to email");
     }
 
@@ -191,7 +191,7 @@ class Database {
 // EmailService Class
 class EmailService {
     // method to send email
-    public void sendEmail(User user, String email) {
+    public void sendPasswordResetEmail(User user, String email) {
         user.initiatePasswordReset();
         System.out.println("Email sent to " + user.getUsername() + " with instructions: " /*.. instructions */);
     }
