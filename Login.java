@@ -8,6 +8,7 @@ import java.util.ArrayList;
 // User Class
 class User {
     private String username;
+    private String email;
     protected String password;
     User user = new User(username, password);
     private UserStatus status = UserStatus.NORMAL;
@@ -65,12 +66,18 @@ class User {
         return password;
     }
 
-    // reset password
+    // providing email to recieve reset password email
+    public void provideEmail(String email) {
+        WebsiteUI websiteUI = new WebsiteUI();
+        websiteUI.requestPasswordReset(email);
+    }
+    
+    // reset password status
     public void initiatePasswordReset() {
         this.initiateResetProcess = true;
     }
 
-    // reset password
+    // initating the steps to reset password once recieving email
     public void changePassword(String newPassword) {
         // check if reset password is initiated
         if(initiateResetProcess) {
@@ -145,7 +152,7 @@ class WebsiteUI {
     }
 
     // method to initiate password reset
-    public void initiatePasswordReset(User user) {
+    public void requestPasswordReset(User user, String email) {
         emailService.sendEmail(user, "Reset password instructions");
         System.out.println("Password reset instructions sent to email");
     }
@@ -179,8 +186,9 @@ class Database {
 // EmailService Class
 class EmailService {
     // method to send email
-    public void sendEmail(User user, String resetPasswordInstructions) {
-        user.initiatePasswordReset();
+    public void sendEmail(String email, User user) {
+        String resetPasswordInstructions;
+        user.initiatePasswordReset(email);
         System.out.println("Email sent to " + user.getUsername() + " with instructions: " + resetPasswordInstructions);
     }
 }
