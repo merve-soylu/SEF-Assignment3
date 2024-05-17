@@ -192,8 +192,7 @@ class Database {
 class EmailService {
     // method to send email
     public void sendEmail(User user, String email) {
-        String resetPasswordInstructions;
         user.initiatePasswordReset(email);
-        System.out.println("Email sent to " + user.getUsername() + " with instructions: " + resetPasswordInstructions);
+        System.out.println("Email sent to " + user.getUsername() + " with instructions: " /*.. instructions */);
     }
 }
