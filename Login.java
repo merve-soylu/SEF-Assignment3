@@ -114,7 +114,7 @@ class WebsiteUI {
 
     // method to reset password in database
     public void resetPassword(User user, String newPassword) {
-        for(User u: Database.users){
+        for(User user: Database.users){
             if(u.getUsername().equals(u.getUsername())){
                 LoginService.resetPassword(u, newPassword);
             }
