@@ -97,7 +97,7 @@ public class WebsiteUI {
     // method to initiate user login
     public void login(String username, String password) {
         if(loginService.verification(username, password)) {
-            loginService.preformLogin(username, password)
+            loginService.preformLogin(username, password);
             System.out.println("User logged in successfully");
         } else {
             System.out.println("Invalid username or password");
