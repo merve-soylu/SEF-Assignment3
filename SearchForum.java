@@ -11,7 +11,7 @@ enum Filter {
 }
 
 // Search Forum Class
-public static class SearchForum {
+public class SearchForum {
     //ArrayList of results (initially empty)
     public ArrayList<Post> searchResults = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public static class SearchForum {
 }
 
 // WebsiteUI Class
-public static class WebsiteUI {
+public class WebsiteUI {
     SearchForum searchForum = new SearchForum();
     Database database = new Database();
     //user inputs a search keyword/phrase and selects a search Filter
@@ -54,7 +54,7 @@ public static class WebsiteUI {
 
 // Database Class
 //mock database which is storing all Posts on the Code QA platform
-public static class Database {
+public class Database {
     //list of all the Posts
     public ArrayList<Post> Posts= new ArrayList<>(/* All the Posts*/);
     
