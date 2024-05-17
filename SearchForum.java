@@ -13,7 +13,7 @@ enum Filter {
 // Search Forum Class
 public static class SearchForum {
     //ArrayList of results (initially empty)
-    public ArrayList<Post> searchResults = new ArrayList<Post>();
+    public ArrayList<Post> searchResults = new ArrayList<>();
 
     //gets search results from the Database according to the user's query and filter
     public ArrayList<Post> getSearchResults(String userQuery, Filter selectedFilter){
@@ -56,10 +56,10 @@ public static class WebsiteUI {
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
     //list of all the Posts
-    public ArrayList<Post> Posts= new ArrayList<Post>(/* All the Posts*/);
+    public ArrayList<Post> Posts= new ArrayList<>(/* All the Posts*/);
     
     //creates empty list for results
-    public ArrayList<Post> searchResults = new ArrayList<Post>();
+    public ArrayList<Post> searchResults = new ArrayList<>();
 
     //returns whether database found results that are relevant to the inquiry
     public boolean postsFound(ArrayList<Post> findPostInSearchForum) {
