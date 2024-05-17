@@ -5,7 +5,7 @@ public class User {
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
-    private UserStatus status = UserStatus.NORMAL;
+    private LoginStatus loginStatus = UserStatus.LOGGEDOUT;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
