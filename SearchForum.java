@@ -12,7 +12,7 @@ enum Filter {
 
 public static class SearchForum {
     //ArrayList of results (initially empty)
-    public static ArrayList<Post> searchResults = new ArrayList<Post>();
+    ArrayList<Post> searchResults = new ArrayList<Post>();
 
     //gets search results from the Database according to the user's query and filter
     static ArrayList<Post> getSearchResults(String userQuery, Filter selectedFilter){
