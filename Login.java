@@ -76,7 +76,7 @@ class User {
         if(initiateResetProcess) {
             WebsiteUI websiteUI = new WebsiteUI();
             this.password = newPassword;
-            websiteUI.resetPassword(user, password)
+            websiteUI.resetPassword(user, password);
             this.initiateResetProcess = false;
         }
     }
