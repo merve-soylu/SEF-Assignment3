@@ -10,7 +10,6 @@ public class User {
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
-    private LoginStatus loginStatus = LoginStatus.LOGGEDOUT;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
@@ -38,11 +37,11 @@ public class User {
         // If user is attempting to login preform given logic
         this.loginStatus = loginStatus;
         if (loginStatus == LoginStatus.LOGGEDIN) {
-            Website.login(username, password)
+            this.loginStatus = WebsiteUI.login(username, password)
         }
         // If user is attempting to logout preform given logic
         else {
-            Website.logout(User user)
+            this.loginStatus = WebsiteUI.logout(User user)
         }
     }
 
