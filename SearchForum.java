@@ -10,9 +10,49 @@ enum Filter {
     NEWEST,
 }
 
+public static class SearchForum {
+    //ArrayList of results (initially empty)
+    public static ArrayList<Post> searchResults = new ArrayList<Post>();
+
+    //gets search results from the Database according to the user's query and filter
+    static ArrayList<Post> getSearchResults(String userQuery, Filter selectedFilter){
+        searchResults = Database.findPostInSearchForum(userQuery, selectedFilter, searchResults);
+        //returns the arrayList of results
+        return searchResults;
+    }
+}
+
+public static class WebsiteUI {
+    //user inputs a search keyword/phrase and selects a search Filter
+    public void searchInquiry(String userInput, Filter selectedFilter){
+       
+        //displays results to the user
+        displayResults(SearchForum.getSearchResults(userInput, selectedFilter));
+    }
+
+    //takes in a list of Posts
+    public void displayResults(ArrayList<Post> searchResults){
+        
+        System.out.println("Search Results: ");
+        //if the list of posts is not null
+        if (Database.postFound(searchInquiry)){
+            //Display each Post in the list
+            for (Post post : searchResults) {
+                System.out.println("Author: " + post.author);
+                System.out.println("Content: " + post.content);
+                System.out.println("Date Posted: " + post.postDate);
+            }
+            System.out.println();
+        }
+        //else returns error message of no results found
+        else System.out.println("No Results found! Please try again with more specific keywords");
+    }
+    
+}
+
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
-    ArrayList<Post> Posts; 
+    public static ArrayList<Post> Posts; 
     
     //creates empty list for results
     ArrayList<Post> searchResults = new ArrayList<>();
@@ -28,7 +68,7 @@ public static class Database {
     }
     
     //returns a List of Posts that match a search query
-    public ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter, ArrayList<Post> searchResults) {
+    public static ArrayList<Post> findPostInSearchForum(String query, Filter selectedFilter, ArrayList<Post> searchResults) {
         
         //checks through all Posts in the database
         for (Post post : Database.Posts) {
@@ -105,7 +145,7 @@ public class Post {
         for (Post post : Database.Posts){
             if (this.postID == post.postID){
                 post.content = "Content of Question has been removed";
-                post.author = Null;
+                post.author = null;
                 post.postDate = this.postDate;
             }
         }
@@ -122,39 +162,3 @@ public class Post {
 
 }
 
-public static class SearchForum {
-        //ArrayList of all stored Posts
-        public static ArrayList<Post> searchResults = new ArrayList<Post>();
-
-        //gets search results from the Search Forum class
-        ArrayList<Post> searchResults = DataBase.findPostInSearchForum(userInput, selectedFilter);
-}
-
-
-public static class WebsiteUI {
-    //user inputs a search keyword/phrase and selects a search Filter
-    public void searchInquiry(String userInput, Filter selectedFilter){
-       
-        //displays results to the user
-        displayResults(SearchForum.searchResults(userInput, selectedFilter));
-    }
-
-    //takes in a list of Posts
-    public void displayResults(ArrayList<Post> searchResults){
-        
-        System.out.println("Search Results: ");
-        //if the list of posts is not null
-        if (database.postFound(searchInquiry)){
-            //Display each Post in the list
-            for (Post post : searchResults) {
-                System.out.println("Author: " + post.author);
-                System.out.println("Content: " + post.content);
-                System.out.println("Date Posted: " + post.postDate);
-            }
-            System.out.println();
-        }
-        //else returns error message of no results found
-        else System.out.println("No Results found! Please try again with more specific keywords");
-    }
-    
-}
