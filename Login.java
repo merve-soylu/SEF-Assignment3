@@ -153,7 +153,7 @@ class WebsiteUI {
 
     // method to initiate password reset
     public void requestPasswordReset(User user, String email) {
-        emailService.sendEmail(user, "Reset password instructions");
+        emailService.sendEmail(user, email);
         System.out.println("Password reset instructions sent to email");
     }
 
