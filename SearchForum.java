@@ -63,12 +63,7 @@ public static class Database {
 
     //returns whether database found results that are relevant to the inquiry
     public boolean postsFound(ArrayList<Post> findPostInSearchForum) {
-        if (findPostInSearchForum != null) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (!findPostInSearchForum.isEmpty());
     }
     
     //returns a List of Posts that match a search query
