@@ -1,4 +1,9 @@
 import java.util.ArrayList;
+// enum for status of user {LOGGEDIN, LOGGEDOUT}
+    enum LoginStatus {
+    LOGGEDIN,
+    LOGGEDOUT
+}
 
 // User Class
 public class User {
@@ -33,7 +38,7 @@ public class User {
         // If user is attempting to login preform given logic
         this.loginStatus = loginStatus;
         if (loginStatus == LoginStatus.LOGGEDIN) {
-            Website.login(String username, String password)
+            Website.login(username, password)
         }
         // If user is attempting to logout preform given logic
         else {
@@ -119,19 +124,22 @@ public class WebsiteUI {
     LoginService loginService = new LoginService();
     
     // method to initiate user login
-    public void login(String username, String password) {
+    public LoginStatus login(String username, String password) {
         if(loginService.verification(username, password)) {
             loginService.preformLogin(username, password);
             System.out.println("User logged in successfully");
+             return LoginStatus.LOGGEDIN;
         } else {
             System.out.println("Invalid username or password");
+            return LoginStatus.LOGGEDOUT;
         }
     }
 
     // method to initiate user logout
-    public void logout(User user) {
+    public LoginStatus logout(User user) {
         loginService.preformLogout(user);
         System.out.println("User logged out successfully");
+        return LoginStatus.LOGGEDOUT;
     }
 
     // method to initiate password reset
