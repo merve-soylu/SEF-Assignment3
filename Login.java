@@ -66,6 +66,11 @@ class User {
         return password;
     }
 
+    // getter for email
+    public String getEmail() {
+        return email;
+    }
+
     // providing email to recieve reset password email
     public void provideEmail(User user, String email) {
         WebsiteUI websiteUI = new WebsiteUI();
