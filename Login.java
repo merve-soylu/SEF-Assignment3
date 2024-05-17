@@ -6,7 +6,7 @@ import java.util.ArrayList;
 }
 
 // User Class
-public class User {
+class User {
     private String username;
     protected String password;
     User user = new User(username, password);
@@ -82,7 +82,7 @@ public class User {
 }
 
 // LoginService Class
-public class LoginService {
+class LoginService {
     // method to authenticate user
     public boolean verification(String username, String password) {
         for(User user: Database.users) {
@@ -118,7 +118,7 @@ public class LoginService {
     }
 }
 
-public class WebsiteUI {
+class WebsiteUI {
     LoginService loginService = new LoginService();
     EmailService emailService = new EmailService();
     // method to initiate user login
