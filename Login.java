@@ -117,7 +117,7 @@ public class LoginService {
 
 public class WebsiteUI {
     LoginService loginService = new LoginService();
-    
+    EmailService emailService = new EmailService();
     // method to initiate user login
     public LoginStatus login(String username, String password) {
         if(loginService.verification(username, password)) {
@@ -139,7 +139,7 @@ public class WebsiteUI {
 
     // method to initiate password reset
     public void initiatePasswordReset(User user) {
-        EmailService.sendEmail(user, "Reset password instructions");
+        emailService.sendEmail(user, "Reset password instructions");
         System.out.println("Password reset instructions sent to email");
     }
 
