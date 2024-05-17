@@ -10,6 +10,7 @@ enum Filter {
     NEWEST,
 }
 
+// Search Forum Class
 public static class SearchForum {
     //ArrayList of results (initially empty)
     public ArrayList<Post> searchResults = new ArrayList<Post>();
@@ -22,6 +23,7 @@ public static class SearchForum {
     }
 }
 
+// WebsiteUI Class
 public static class WebsiteUI {
     //user inputs a search keyword/phrase and selects a search Filter
     public void searchInquiry(String userInput, Filter selectedFilter){
@@ -50,6 +52,7 @@ public static class WebsiteUI {
     
 }
 
+// Database Class
 //mock database which is storing all Posts on the Code QA platform
 public static class Database {
     //list of all the Posts
@@ -117,7 +120,6 @@ public class User {
     String username;
     String password;
     ArrayList<Post> UserPosts = new ArrayList<>();
-
 }
 
 //Post Class
