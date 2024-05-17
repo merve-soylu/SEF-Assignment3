@@ -3,19 +3,14 @@ import java.util.ArrayList;
 public class User {
     private String username;
     private String password;
-    private UserStatus loginstatus = UserStatus.NORMAL;
+    private UserStatus status = UserStatus.NORMAL;
     protected boolean initiateResetProcess = false;
 
     // enum for status of user {BANNED, FROZEN, NORMAL}
     public enum UserStatus {
         BANNED, FROZEN, NORMAL
     }
-
-    // enum for login status of user {LOGGEDIN, LOGGEDOUT}
-    public enum LoginStatus {
-        LOGGEDIN, LOGGEDOUT
-    }
-
+    
     // set status of user
     public void setStatus(UserStatus status) {
         this.status = status;
