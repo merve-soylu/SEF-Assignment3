@@ -20,6 +20,16 @@ public class User {
     public UserStatus getStatus() {
         return status;
     }
+
+     // method to login user out
+    public void loginUser(String username, String password) {
+        // logic to login user out
+    }
+    
+    // method to log user out
+    public void logoutUser(User user) {
+        // logic to log user out
+    }
     
     // constructor for user
     public User(String username, String password) {
@@ -73,16 +83,6 @@ public class LoginService {
         return false;
     }
 
-     // method to login user out
-    public void loginUser(String username, String password) {
-        // logic to login user out
-    }
-    
-    // method to log user out
-    public void logoutUser(User user) {
-        // logic to log user out
-    }
-    
     // reset password
     public void resetPassword(User user, String newPassword) {
         user.password = newPassword;
@@ -93,7 +93,7 @@ public class WebsiteUI {
     LoginService loginService = new LoginService();
     
     // method to initiate user login
-    public void login(String username, String password) {
+    public void preformLogin(String username, String password) {
         if(loginService.verification(username, password)) {
             loginService.loginUser(username, password)
             System.out.println("User logged in successfully");
@@ -103,7 +103,7 @@ public class WebsiteUI {
     }
 
     // method to initiate user logout
-    public void logout(User user) {
+    public void preformLogout(User user) {
         loginService.logoutUser(user);
         System.out.println("User logged out successfully");
     }
