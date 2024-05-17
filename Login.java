@@ -107,6 +107,7 @@ class LoginService {
     // reset password
     public void callUpdatePassword(User user, String newPassword) {
         Database database = new Database();
+        // logic which implements sending query for database
         database.updatePassword(user, newPassword);
     }
 
@@ -165,6 +166,7 @@ class Database {
     // array of users
     static ArrayList<User> users = new ArrayList<>(/*All the users*/);
 
+    // method to update password in database
     public void updatePassword(User user, String newPassword) {
         for(User user: Database.users){
                 if(user.getUsername().equals(user.getUsername())){
