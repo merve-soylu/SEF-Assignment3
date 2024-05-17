@@ -8,7 +8,7 @@ import java.util.ArrayList;
 // User Class
 public class User {
     private String username;
-    private String password;
+    protected String password;
     private UserStatus status = UserStatus.NORMAL;
     private LoginStatus loginStatus = LoginStatus.LOGGEDIN;
     protected boolean initiateResetProcess = false;
