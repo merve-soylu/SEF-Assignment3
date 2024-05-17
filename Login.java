@@ -89,11 +89,13 @@ public class LoginService {
     }
 }
 
-class WebsiteUI {
+public class WebsiteUI {
+    LoginService loginService = new LoginService();
+    
     // method to initiate user login
     public void login(String username, String password) {
-        if(LoginService.verification(username, password)) {
-            LoginService.loginUser(username, password)
+        if(loginService.verification(username, password)) {
+            loginService.loginUser(username, password)
             System.out.println("User logged in successfully");
         } else {
             System.out.println("Invalid username or password");
@@ -102,7 +104,7 @@ class WebsiteUI {
 
     // method to initiate user logout
     public void logout(User user) {
-        LoginService.logoutUser(user);
+        loginService.logoutUser(user);
         System.out.println("User logged out successfully");
     }
 
