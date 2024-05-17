@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class User {
     private String username;
     protected String password;
+    User user = new User(username, password);
     private UserStatus status = UserStatus.NORMAL;
     private LoginStatus loginStatus = LoginStatus.LOGGEDIN;
     protected boolean initiateResetProcess = false;
@@ -16,6 +17,12 @@ public class User {
     // enum for status of user {BANNED, FROZEN, NORMAL}
     public enum UserStatus {
         BANNED, FROZEN, NORMAL
+    }
+
+    // constructor for user
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
     
     // set status of user
@@ -46,12 +53,6 @@ public class User {
     // get loginStatus of user
     public LoginStatus getLoginStatus() {
         return loginStatus;
-    }
-    
-    // constructor for user
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
     }
 
     // getter for username
