@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 
 public class User {
-    private boolean loggedIn = false;
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
