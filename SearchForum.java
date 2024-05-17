@@ -15,7 +15,7 @@ public static class SearchForum {
     ArrayList<Post> searchResults = new ArrayList<Post>();
 
     //gets search results from the Database according to the user's query and filter
-    static ArrayList<Post> getSearchResults(String userQuery, Filter selectedFilter){
+    public ArrayList<Post> getSearchResults(String userQuery, Filter selectedFilter){
         searchResults = Database.findPostInSearchForum(userQuery, selectedFilter, searchResults);
         //returns the arrayList of results
         return searchResults;
