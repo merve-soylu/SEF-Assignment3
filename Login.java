@@ -31,6 +31,7 @@ public class User {
      // set status of user
     public void setLoginStatus(LoginStatus loginStatus) {
         // If user is attempting to login preform given logic
+        this.loginStatus = loginStatus;
         if (loginStatus == LoginStatus.LOGGEDIN) {
             Website.login(String username, String password)
         }
