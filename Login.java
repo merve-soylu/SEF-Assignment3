@@ -71,10 +71,12 @@ class User {
     }
 
     // reset password
-    public void resetPassword(String newPassword) {
+    public void changePassword(String newPassword) {
         // check if reset password is initiated
         if(initiateResetProcess) {
+            WebsiteUI websiteUI = new WebsiteUI();
             this.password = newPassword;
+            websiteUI.resetPassword(user, password)
             this.initiateResetProcess = false;
         }
     }
@@ -103,8 +105,9 @@ class LoginService {
     }
 
     // reset password
-    public void resetPassword(User user, String newPassword) {
-        user.password = newPassword;
+    public void callUpdatePassword(User user, String newPassword) {
+        Database database = new Database();
+        database.updatePassword(User user, String newPassword)
     }
 
     // Login user
@@ -150,7 +153,7 @@ class WebsiteUI {
     public void resetPassword(User user, String newPassword) {
         for(User user: Database.users){
             if(user.getUsername().equals(user.getUsername())){
-                loginService.resetPassword(user, newPassword);
+                loginService.callUpdatePassword(user, newPassword);
             }
         }
         System.out.println("Password reset successfully");
@@ -161,6 +164,13 @@ class WebsiteUI {
 class Database {
     // array of users
     static ArrayList<User> users = new ArrayList<>(/*All the users*/);
+
+    public void updatePassword(User user, String newPassword) {
+        for(User user: Database.users){
+                if(user.getUsername().equals(user.getUsername())){
+                // implement logic for changing password in database
+                }
+        }
 }
 
 // EmailService Class
