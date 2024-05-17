@@ -111,10 +111,29 @@ class Database {
 }
 
 //User Class
+//User Class
 class User {
     String username;
+    String userInput;
+    Filter selectedFilter = Filter.DEFAULT;
     String password;
     ArrayList<Post> UserPosts = new ArrayList<>();
+
+    // Initating and calling search functionality
+    public void search() {
+        WebsiteUI websiteUI = new WebsiteUI();
+        websiteUI.searchInquiry(userInput, selectedFilter);
+    }
+
+    // Setting userinput to search
+    public void setUserInput(String userInput) {
+        this.userInput = userInput;
+    }
+
+    // Setting selected filter
+    public void selectedFilter(Filter selectedFilter) {
+        this.selectedFilter = selectedFilter;
+    }
 }
 
 //Post Class
