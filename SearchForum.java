@@ -25,19 +25,20 @@ public static class SearchForum {
 
 // WebsiteUI Class
 public static class WebsiteUI {
+    SearchForum searchForum = new SearchForum();
+    Database database = new Database();
     //user inputs a search keyword/phrase and selects a search Filter
     public void searchInquiry(String userInput, Filter selectedFilter){
-        SearchForum searchForum = new SearchForum();
         //displays results to the user
-        displayResults(searchForum.getSearchResults(userInput, selectedFilter));
+        displayResults(searchForum.getSearchResults(userInput, selectedFilter), userInput, selectedFilter);
     }
 
     //takes in a list of Posts
-    public void displayResults(ArrayList<Post> searchResults){
+    public void displayResults(ArrayList<Post> searchResults, String userInput, Filter selectedFilter){
         
         System.out.println("Search Results: ");
         //if the list of posts is not null
-        if (Database.postFound(searchInquiry)){
+        if (database.postsFound(searchForum.getSearchResults(userInput, selectedFilter))){
             //Display each Post in the list
             for (Post post : searchResults) {
                 System.out.println("Author: " + post.author);
@@ -48,8 +49,7 @@ public static class WebsiteUI {
         }
         //else returns error message of no results found
         else System.out.println("No Results found! Please try again with more specific keywords");
-    }
-    
+    }   
 }
 
 // Database Class
