@@ -12,6 +12,11 @@ public class User {
     public enum UserStatus {
         BANNED, FROZEN, NORMAL
     }
+
+    // enum for status of user {LOGGEDIN, LOGGEDOUT}
+    public enum LoginStatus {
+        LOGGEDIN, LOGGEDOUT
+    }
     
     // set status of user
     public void setStatus(UserStatus status) {
