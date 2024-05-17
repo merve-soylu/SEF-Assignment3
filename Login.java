@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class User {
+    private boolean loggedIn = false;
     private String username;
     private String password;
     private UserStatus status = UserStatus.NORMAL;
@@ -22,13 +23,15 @@ public class User {
     }
 
      // method to login user out
-    public void loginUser(String username, String password) {
-        // logic to login user out
+    public void login(String username, String password) {
+        // initate login
+        Website.preformLogin(String username, String password)
     }
     
     // method to log user out
-    public void logoutUser(User user) {
-        // logic to log user out
+    public void logout(User user) {
+        // initate logout
+        Website.preformLogout(User user)
     }
     
     // constructor for user
