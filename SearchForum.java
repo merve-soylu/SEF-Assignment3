@@ -27,9 +27,9 @@ public static class SearchForum {
 public static class WebsiteUI {
     //user inputs a search keyword/phrase and selects a search Filter
     public void searchInquiry(String userInput, Filter selectedFilter){
-       
+        SearchForum searchForum = new SearchForum();
         //displays results to the user
-        displayResults(SearchForum.getSearchResults(userInput, selectedFilter));
+        displayResults(searchForum.getSearchResults(userInput, selectedFilter));
     }
 
     //takes in a list of Posts
