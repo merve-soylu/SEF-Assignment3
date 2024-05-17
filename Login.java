@@ -21,18 +21,6 @@ public class User {
     public UserStatus getStatus() {
         return status;
     }
-
-     // method to login user out
-    public void login(String username, String password) {
-        // initate login
-        Website.preformLogin(String username, String password)
-    }
-    
-    // method to log user out
-    public void logout(User user) {
-        // initate logout
-        Website.preformLogout(User user)
-    }
     
     // constructor for user
     public User(String username, String password) {
@@ -91,15 +79,25 @@ public class LoginService {
     public void resetPassword(User user, String newPassword) {
         user.password = newPassword;
     }
+
+    // Login user
+    public void preformLogin(String username, String password) {
+        // preform logic to login user to website
+    }
+
+    // Logout user
+    public void preformLogout(User user) {
+        // preform logic to logout user from website
+    }
 }
 
 public class WebsiteUI {
     LoginService loginService = new LoginService();
     
     // method to initiate user login
-    public void preformLogin(String username, String password) {
+    public void login(String username, String password) {
         if(loginService.verification(username, password)) {
-            loginService.loginUser(username, password)
+            loginService.preformLogin(username, password)
             System.out.println("User logged in successfully");
         } else {
             System.out.println("Invalid username or password");
@@ -107,8 +105,8 @@ public class WebsiteUI {
     }
 
     // method to initiate user logout
-    public void preformLogout(User user) {
-        loginService.logoutUser(user);
+    public void logout(User user) {
+        loginService.preformLogout(user);
         System.out.println("User logged out successfully");
     }
 
