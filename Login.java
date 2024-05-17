@@ -67,9 +67,9 @@ class User {
     }
 
     // providing email to recieve reset password email
-    public void provideEmail(String email) {
+    public void provideEmail(User user, String email) {
         WebsiteUI websiteUI = new WebsiteUI();
-        websiteUI.requestPasswordReset(email);
+        websiteUI.requestPasswordReset(user, email);
     }
     
     // reset password status
